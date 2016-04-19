@@ -16,6 +16,10 @@
 			color: green;
 		}
 
+		.redText {
+			color: red;
+		}
+
 		.whiteText {
 			color: white;
 		}
@@ -34,7 +38,28 @@
 	<div ng-controller="MyController as ctrl">
 
 
-	<h3>Radio Button</h3>
+
+	<button ng-click="ctrl.onUserClick()">Toggle check box</button>
+
+
+
+	<h3>Check Boxes</h3>
+	<input type="checkbox" ng-model="ctrl.isBoxChecked">
+	<div ng-bind="::ctrl.isBoxChecked"></div>
+
+	<div ng-if="ctrl.isBoxChecked" class="redText">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis nam quod, ab illo quas tempora laborum sint iste hic incidunt totam amet, recusandae consequatur placeat tenetur ipsa quibusdam, optio vero?
+	</div>
+	<div ng-show="ctrl.isBoxChecked" class="greenText">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis nam quod, ab illo quas tempora laborum sint iste hic incidunt totam amet, recusandae consequatur placeat tenetur ipsa quibusdam, optio vero?
+	</div>
+
+
+
+
+
+
+<!-- 	<h3>Radio Button</h3>
 	<input type="radio"
 		name="pet"
 		ng-model="ctrl.petSelected"
@@ -50,7 +75,7 @@
 
 	<div>
 		<label>Selected Pet Name: </label><span ng-bind="ctrl.petSelected.name"></span>
-	</div>
+	</div> -->
 
 
 <!-- 	<h3>Text Input</h3>

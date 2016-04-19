@@ -14,18 +14,21 @@ myMod.controller('MyController', function() {
 		}
 	};
 
-
-	self.myDog = {
-		name: 'Max'
+	self.onUserClick = function() {
+		self.isBoxChecked = !self.isBoxChecked;
 	};
-	self.myCat = {
-		name: 'Sally'
-	};
-	self.myHamster = {
-		name: 'Tom'
-	}
 
+	self.isBoxChecked = true;
 
+	// self.myDog = {
+	// 	name: 'Max'
+	// };
+	// self.myCat = {
+	// 	name: 'Sally'
+	// };
+	// self.myHamster = {
+	// 	name: 'Tom'
+	// };
 
 	// self.myPerson = {
 	// 	name: 'George',
