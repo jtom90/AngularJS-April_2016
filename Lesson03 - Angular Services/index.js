@@ -19,7 +19,6 @@ angular.module('MyModule', [])
 	}
 })
 
-
 .controller('MyController', function($timeout, $interval, $log, $scope, Car, COLORS) {
 	var self = this;
 
