@@ -6,11 +6,27 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(MainResource) {
+  function MainController(MainResource, MainDataService) {
     var self = this;
     self.greeting = "Hello World"
 
-    var resourceObject = MainResource;
+
+
+
+    self.onAddressChange = function(userAddress) {
+        MainDataService.getMainCtrlAddresses(userAddress, function(isValid, addresses) {
+            if (isValid) {
+                self.addresses = addresses;
+            }
+        });
+    };
+
+
+
+
+
+
+
 
     self.makeRequest = function() {
     	// first argument is the URL params
@@ -18,7 +34,7 @@
 
 
     	// using futures
-    	resourceObject.getPeople({
+    	MainResource.getPeople({
     		page: 0,
     		numResults: 55
     	}, function onSuccess(response) {
