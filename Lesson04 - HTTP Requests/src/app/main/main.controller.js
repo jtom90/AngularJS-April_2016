@@ -11,16 +11,13 @@
     self.greeting = "Hello World"
 
 
-
-
     self.onAddressChange = function(userAddress) {
-        MainDataService.getMainCtrlAddresses(userAddress, function(isValid, addresses) {
+        MainDataService.getMainCtrlAddresses(userAddress, function (isValid, addresses) {
             if (isValid) {
                 self.addresses = addresses;
             }
         });
     };
-
 
 
 
