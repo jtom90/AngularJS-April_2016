@@ -29,6 +29,39 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color:red;
+  display: inline-block;
+  margin-right: 10px;
+  transition: 1s ease-in all;
+}
+.box.ng-enter {
+  opacity: 0.0;
+  transform: translateX(-25px);
+}
+.box.ng-enter-active {
+  opacity: 1.0;
+  transform: translateX(0);
+}
+.box.ng-leave {
+  opacity: 1.0;
+  transform: translateX(0);
+}
+.box.ng-leave-active {
+  opacity: 0.0;
+  transform: translateX(-25px);
+}
+
+
+
+
+
+
+
+
 .ng-dirty.ng-invalid {
 	border-color:red;
 }

@@ -2,6 +2,19 @@
 
  	
   	<h1 ng-bind="ctrl.greeting"></h1>
+
+	<button ng-click="ctrl.addBox()">Add</button>
+	<button ng-click="ctrl.removeBox()">Remove</button>
+	<br/>
+	<div ng-repeat="box in ctrl.boxes" class="box">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid id quisquam delectus, eos error, saepe totam facere ipsum sint perspiciatis quasi? Asperiores molestias magni ipsa officia unde cupiditate at sapiente!
+	</div>
+	
+
+
+
+
+
 	
 	<form name="ctrl.myForm" ng-submit="ctrl.submitTheForm()">
 		<input type="text"

@@ -10,6 +10,19 @@
     var self = this;
     self.greeting = "Hello World"
 
+    self.boxes = [];
+
+    self.addBox = function () {
+        self.boxes.push({})
+    };
+    self.removeBox = function () {
+        self.boxes.pop();
+    };
+
+
+
+
+
     self.phoneExp = /^\(\d\d\d\) \d\d\d-\d\d\d\d$/;
 
     self.submitTheForm = function() {
