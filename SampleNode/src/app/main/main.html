@@ -5,15 +5,15 @@
         <a href="#/" 
            class="btn btn-success"
            role="button"
-           ng-click="mainCtrl.toggleView(true)"
-           ng-class="mainCtrl.displayTodos ? 'active': ''">
+           ng-click="ctrl.toggleView(true)"
+           ng-class="ctrl.displayTodos ? 'active': ''">
            Todos
         </a>
         <a href="#/" 
            class="btn btn-success"
            role="button"
-           ng-click="mainCtrl.toggleView(false)"
-           ng-class="mainCtrl.displayTodos ? '': 'active'">
+           ng-click="ctrl.toggleView(false)"
+           ng-class="ctrl.displayTodos ? '': 'active'">
            SuperHeros
         </a>
       </div>
@@ -21,41 +21,41 @@
   </div>
   <div class="row">
     <!-- Display Todos -->
-    <div ng-if="mainCtrl.displayTodos" ng-controller="TodoController as ctrl">
+    <div ng-if="ctrl.displayTodos" ng-controller="TodoController as todoCtrl">
       <div  class="col-xs-6">
         <h1>Todos List</h1>
-        <div ng-repeat="todo in ctrl.todos">
-          <label>Name: </label><span ng-bind="todo.name"></span><button class="btn btn-default btn-sm" ng-click="ctrl.editTodo(todo)">Edit</button>
+        <div ng-repeat="todo in todoCtrl.todos">
+          <label>Name: </label><span ng-bind="todo.name"></span><button class="btn btn-default btn-sm" ng-click="todoCtrl.editTodo(todo)">Edit</button>
         </div>
       </div>
       <div class="col-xs-6">
-        <h1 ng-hide="ctrl.isEditing">Todo Add</h1>
-        <h1 ng-show="ctrl.isEditing">Todo Edit</h1>
+        <h1 ng-hide="todoCtrl.isEditing">Todo Add</h1>
+        <h1 ng-show="todoCtrl.isEditing">Todo Edit</h1>
         <div>
-          <label>Name: </label><input type="text" ng-model="ctrl.userTodo.name"></input>
+          <label>Name: </label><input type="text" ng-model="todoCtrl.userTodo.name"></input>
         </div>
         <br>
         <div>
-          <label>Description: </label><textarea style="vertical-align: top;" ng-model="ctrl.userTodo.description"></textarea>
+          <label>Description: </label><textarea style="vertical-align: top;" ng-model="todoCtrl.userTodo.description"></textarea>
         </div>
-        <div ng-show="ctrl.isEditing">
-          <label>Last Updated: </label><span ng-bind="ctrl.userTodo.lastUpdated"></span>
+        <div ng-show="todoCtrl.isEditing">
+          <label>Last Updated: </label><span ng-bind="todoCtrl.userTodo.lastUpdated"></span>
         </div>
         <div>
-          <button ng-hide="ctrl.isEditing" class="btn btn-primary" ng-click="ctrl.addTodo(ctrl.userTodo)">Add</button>
-          <div ng-show="ctrl.isEditing">
-            <button class="btn btn-primary" ng-click="ctrl.updateTodo(ctrl.userTodo)">Update</button>
-            <button class="btn btn-default" ng-click="ctrl.cancelUpdate()">Cancel</button>
+          <button ng-hide="todoCtrl.isEditing" class="btn btn-primary" ng-click="todoCtrl.addTodo(todoCtrl.userTodo)">Add</button>
+          <div ng-show="todoCtrl.isEditing">
+            <button class="btn btn-primary" ng-click="todoCtrl.updateTodo(todoCtrl.userTodo)">Update</button>
+            <button class="btn btn-default" ng-click="todoCtrl.cancelUpdate()">Cancel</button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Display Super Heros -->
-    <div ng-if="!mainCtrl.displayTodos" ng-controller="SuperheroController as ctrl">
+    <div ng-if="!ctrl.displayTodos" ng-controller="SuperheroController as shCtrl">
       <div  class="col-xs-6">
         <h1>Superheros List</h1>
-        <div ng-repeat="superhero in ctrl.superheros">
+        <div ng-repeat="superhero in shCtrl.superheros">
           <img ng-src="{{superhero.profileImage}}">
           <label>Name: </label><span ng-bind="superhero.name"></span>
         </div>
@@ -63,17 +63,17 @@
         <div class="col-xs-6">
           <h1>Add Superhero</h1>
           <div>
-            <label>Name: </label><input type="text" ng-model="ctrl.superhero.name"></input>
+            <label>Name: </label><input type="text" ng-model="shCtrl.superhero.name"></input>
           </div>
           <div>
             <label>Profile Image: </label>
-            <img ng-src="{{ctrl.superhero.profileImage}}">
+            <img ng-src="{{shCtrl.superhero.profileImage}}">
 
             <!-- useing ngf-select from the ng-file-upload library -->
-            <input type="file" ngf-select ng-model="ctrl.superhero.file">
+            <input type="file" ngf-select ng-model="shCtrl.superhero.file">
           </div>
           <div>
-            <button class="btn btn-primary" ng-click="ctrl.addSuperhero(ctrl.superhero)">Add</button>
+            <button class="btn btn-primary" ng-click="shCtrl.addSuperhero(shCtrl.superhero)">Add</button>
           </div>
         </div>
       </div>
