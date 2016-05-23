@@ -3,7 +3,6 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
-var middleware = require('./proxy');
 
 var browserSync = require('browser-sync');
 var browserSyncSpa = require('browser-sync-spa');
@@ -32,9 +31,10 @@ function browserSyncInit(baseDir, browser) {
    * You just have to configure a context which will we redirected and the target url.
    * Example: $http.get('/users') requests will be automatically proxified.
    *
-   * For more details and option, https://github.com/chimurai/http-proxy-middleware/blob/v0.0.5/README.md
+   * For more details and option, https://github.com/chimurai/http-proxy-middleware/blob/v0.9.0/README.md
    */
-  server.middleware = middleware;
+
+  server.middleware = proxyMiddleware(['/api', '/images'], {target: 'http://localhost:8080', changeOrigin: true});
 
   browserSync.instance = browserSync.init({
     startPath: '/',

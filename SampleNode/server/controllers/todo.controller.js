@@ -10,7 +10,6 @@ var ToDoModel = mongoose.model('ToDo');
  * Signup
  */
 exports.addTodo = function(req, res) {
-
   // Init Variables
   var todo = new ToDoModel(req.body);
 
@@ -53,13 +52,12 @@ exports.getTodoDetails = function(req, res) {
 
 exports.updateTodo = function(req, res) {
   var todo = req.body;
-  ToDoModel.find({_id: todo._id}).exec(function(err, todos) {
+  ToDoModel.findOne({_id: todo._id}).exec(function(err, match) {
     if (err) {
       return res.status(400).send({
         message: err
       });
     } else {
-      var match = todos && todos.length && todos[0];
       match.name = todo.name;
       match.description = todo.description;
       match.save(function(err) {

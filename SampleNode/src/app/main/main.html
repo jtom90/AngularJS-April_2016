@@ -1,34 +1,82 @@
 <div class="container">
-
   <div class="row">
-    <div class="col-xs-6">
-      <h1>Todos List</h1>
-      <div ng-repeat="todo in ctrl.todos">
-          <label>Name: </label><span ng-bind="todo.name"></span><button class="btn btn-default btn-sm" ng-click="ctrl.editTodo(todo)">Edit</button>
-      </div>
-    </div>
-    <div class="col-xs-6">
-      <h1 ng-hide="ctrl.isEditing">Todo Add</h1>
-      <h1 ng-show="ctrl.isEditing">Todo Edit</h1>
-      <div>
-        <label>Name: </label><input type="text" ng-model="ctrl.userTodo.name"></input>
-      </div>
-      <br>
-      <div>
-        <label>Description: </label><textarea style="vertical-align: top;" ng-model="ctrl.userTodo.description"></textarea>
-      </div>
-      <div ng-show="ctrl.isEditing">
-        <label>Last Updated: </label><span ng-bind="ctrl.userTodo.lastUpdated"></span>
-      </div>
-      <div>
-        <button ng-hide="ctrl.isEditing" class="btn btn-primary" ng-click="ctrl.addTodo(ctrl.userTodo)">Add</button>
-        <div ng-show="ctrl.isEditing">
-          <button class="btn btn-primary" ng-click="ctrl.updateTodo(ctrl.userTodo)">Update</button>
-          <button class="btn btn-default" ng-click="ctrl.cancelUpdate()">Cancel</button>
-        </div>
-        
+    <div class="col-xs-12">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="#/" 
+           class="btn btn-success"
+           role="button"
+           ng-click="mainCtrl.toggleView(true)"
+           ng-class="mainCtrl.displayTodos ? 'active': ''">
+           Todos
+        </a>
+        <a href="#/" 
+           class="btn btn-success"
+           role="button"
+           ng-click="mainCtrl.toggleView(false)"
+           ng-class="mainCtrl.displayTodos ? '': 'active'">
+           SuperHeros
+        </a>
       </div>
     </div>
   </div>
+  <div class="row">
+    <!-- Display Todos -->
+    <div ng-if="mainCtrl.displayTodos" ng-controller="TodoController as ctrl">
+      <div  class="col-xs-6">
+        <h1>Todos List</h1>
+        <div ng-repeat="todo in ctrl.todos">
+          <label>Name: </label><span ng-bind="todo.name"></span><button class="btn btn-default btn-sm" ng-click="ctrl.editTodo(todo)">Edit</button>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <h1 ng-hide="ctrl.isEditing">Todo Add</h1>
+        <h1 ng-show="ctrl.isEditing">Todo Edit</h1>
+        <div>
+          <label>Name: </label><input type="text" ng-model="ctrl.userTodo.name"></input>
+        </div>
+        <br>
+        <div>
+          <label>Description: </label><textarea style="vertical-align: top;" ng-model="ctrl.userTodo.description"></textarea>
+        </div>
+        <div ng-show="ctrl.isEditing">
+          <label>Last Updated: </label><span ng-bind="ctrl.userTodo.lastUpdated"></span>
+        </div>
+        <div>
+          <button ng-hide="ctrl.isEditing" class="btn btn-primary" ng-click="ctrl.addTodo(ctrl.userTodo)">Add</button>
+          <div ng-show="ctrl.isEditing">
+            <button class="btn btn-primary" ng-click="ctrl.updateTodo(ctrl.userTodo)">Update</button>
+            <button class="btn btn-default" ng-click="ctrl.cancelUpdate()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Display Super Heros -->
+    <div ng-if="!mainCtrl.displayTodos" ng-controller="SuperheroController as ctrl">
+      <div  class="col-xs-6">
+        <h1>Superheros List</h1>
+        <div ng-repeat="superhero in ctrl.superheros">
+          <img ng-src="{{superhero.profileImage}}">
+          <label>Name: </label><span ng-bind="superhero.name"></span>
+        </div>
+      </div>
+        <div class="col-xs-6">
+          <h1>Add Superhero</h1>
+          <div>
+            <label>Name: </label><input type="text" ng-model="ctrl.superhero.name"></input>
+          </div>
+          <div>
+            <label>Profile Image: </label>
+            <img ng-src="{{ctrl.superhero.profileImage}}">
+
+            <!-- useing ngf-select from the ng-file-upload library -->
+            <input type="file" ngf-select ng-model="ctrl.superhero.file">
+          </div>
+          <div>
+            <button class="btn btn-primary" ng-click="ctrl.addSuperhero(ctrl.superhero)">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

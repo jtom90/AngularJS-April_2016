@@ -1,22 +1,21 @@
 <!doctype html>
-<html class="no-js" ng-app="sampleNode">
+<html ng-app="template">
   <head>
     <meta charset="utf-8">
-    <title>sampleNode</title>
+    <title>template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <!-- bower:css -->
-    <!-- run `gulp wiredep` to automaticaly populate bower styles dependencies -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:css({.tmp/serve,src}) styles/app.css -->
     <!-- inject:css -->
-    <!-- css files will be automaticaly insert here -->
+    <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
   </head>
@@ -29,13 +28,13 @@
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
-    <!-- run `gulp wiredep` to automaticaly populate bower script dependencies -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
     <!-- inject:js -->
-    <!-- js files will be automaticaly insert here -->
+    <!-- js files will be automatically insert here -->
     <!-- endinject -->
 
     <!-- inject:partials -->

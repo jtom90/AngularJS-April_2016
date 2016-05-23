@@ -1,7 +1,5 @@
 'use strict';
 
-var express = require('express');
-
 var config = require('./server/config/config');
 var mongoose = require('mongoose');
 
@@ -17,14 +15,8 @@ mongoose.connection.on('error', function(err) {
   }
 );
 
-var app = require('./server/init/express')(db); // all the initialization
-
-
+var app = require('./server/init/express')(db);
 var server = app.listen(8080, function () {
-
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Server Listening at http://%s:%s', host, port);
+  console.log('Server Listening at http://localhost:%s', server.address().port);
 });
 
