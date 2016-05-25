@@ -1,8 +1,11 @@
 'use strict';
 
+var mkdirp = require('mkdirp');
 var path = require('path');
 var uuid = require('node-uuid');
 var multer  = require('multer');
+
+mkdirp(path.resolve('uploads/images'));
 
 var storage = multer.diskStorage({
 	destination: function(req, file, cb) {
